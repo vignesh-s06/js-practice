@@ -1,32 +1,24 @@
-let hourElement = document.getElementById("hours"),
-  minuteElement = document.getElementById("minutes"),
-  secondElement = document.getElementById("seconds");
+function difference(){
+  let currentDate = new Date().getTime();
+  let targetDate = new Date("Jan 1, 2022 00:00:00").getTime();
 
-function currentMoment() {
-  let timestamp = new Date();
-  //how to get current date
-  console.log(timestamp);
+  var distance = targetDate - currentDate;
 
-  hourElement.innerHTML = timestamp.getHours();
-  minuteElement.innerHTML = timestamp.getMinutes();
-  secondElement.innerHTML = timestamp.getSeconds();
+  
+  // Time calculations for days, hours, minutes and seconds
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+console.log(days, hours, minutes, seconds);
 
-  //how to get current date
-  console.log("date:" + timestamp.getDate());
-  //how to get current month
-  console.log("month:" + timestamp.getMonth());
-  //how to get current year
-  console.log("year:" + timestamp.getFullYear());
-  //how to get current hours
-  console.log("hour:" + timestamp.getHours());
-  //how to get current minutes
-  console.log("minutes:" + timestamp.getMinutes());
-  //how to get current second
-  console.log("second:" + timestamp.getSeconds());
-  //how to get current time
-  console.log("time:" + timestamp.getTime());
+document.querySelector('.days').innerHTML = days;
+document.querySelector('.hours').innerHTML = hours;
+document.querySelector('.minutes').innerHTML = minutes;
+document.querySelector('.seconds').innerHTML = seconds;
 }
 
+
 //to apply the interval
-setInterval(currentMoment, 1000);
+setInterval(difference, 1000);
 //currentMoment();
